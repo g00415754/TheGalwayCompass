@@ -1,5 +1,5 @@
 body{
-    background-color: #F2F2F2;
+    background-color: #f2e8cf;
 }
 
 
@@ -12,7 +12,6 @@ body{
     background-size: cover;
 }
 
-#hero ul li{
-    padding: 0 15px;
-    margin: auto;
+#hero ul li a{
+    color: #fff;
 }
