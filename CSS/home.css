@@ -1,10 +1,10 @@
 body{
-    background-color: #f2e8cf;
+    background-color: #fefcfb;
 }
 
 
 #hero{
-    background-image: url("../IMG/Header1.jpeg");
+    background-color: #034078;
     mask-image: linear-gradient(to bottom, black 75%, transparent);
     height: 95vh;
     background-repeat: no-repeat;
@@ -12,6 +12,7 @@ body{
     background-size: cover;
 }
 
-#hero ul li a{
-    color: #fff;
+#places_to_visit{
+    background-color: #1282a2;
+    height: 600px;
 }
