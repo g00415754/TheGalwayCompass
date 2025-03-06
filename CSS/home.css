@@ -4,15 +4,129 @@ body{
 
 
 #hero{
-    background-color: #034078;
     mask-image: linear-gradient(to bottom, black 75%, transparent);
     height: 95vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+  
+}
+nav {
+    transition: all 1s ease;
 }
 
-#places_to_visit{
-    background-color: #1282a2;
-    height: 600px;
+#cursor-dot {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%); /* Centers dot */
+    mix-blend-mode: difference  ; /* Changes on hover */
+    transition: width 0.2s ease, height 0.2s ease;
+}
+
+
+#visit {
+    height: 75vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2vh 5vw;
+    background-color: #1282A2;
+    border-top-right-radius: 200px 10px;
+    border-top-left-radius: 300px 20px;
+}
+
+#visit .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+}
+
+/* H2 Styling */
+#visit h2 {
+    font-size: 2.5vw; /* Scales with screen size */
+    text-align: left;
+    margin-bottom: 2vh;
+}
+
+#visit h2, p{
+    color: #fefcfb;
+}
+/* Card Container */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Always 2 columns */
+    gap: 2vh; /* Keep space proportional */
+    justify-content: center;
+}
+
+/* Card Styling */
+.card {
+    height: 25vh; /* Scales with screen height */
+    max-width: 25vw; /* Scales with screen width */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1vh;
+}
+
+.card-img-top {
+    height: 7vh; /* Image scales proportionally */
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1vh;
+    font-size: 1vw; /* Text scales */
+}
+.card-text{
+    color: #001F54;
+}
+
+
+/* 🔹 Responsive Design */
+@media (max-width: 768px) {
+    #visit {
+        flex-direction: column;
+    }
+
+    #visit .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Adjust proportions for smaller screens */
+    .card {
+        max-width: 20vw;
+        height: 18vh;
+    }
+
+    .card-img-top {
+        height: 8vh;
+    }
+
+    .card-body {
+        font-size: 1.2vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        max-width: 25vw;
+        height: 20vh;
+    }
+
+    .card-img-top {
+        height: 9vh;
+    }
+
+    .card-body {
+        font-size: 1.5vw;
+    }
 }
