@@ -1,5 +1,17 @@
 body {
     background-color: #fefcfb;
+    font-size: 16pt;
+}
+
+.custom-navbar {
+    max-width: 90%;
+    margin: 10px auto;
+}
+
+
+.nav-link {
+    color: #1282A2;
+    font-size: 1rem;
 }
 
 /* Parallax Hero Section */
@@ -9,6 +21,7 @@ body {
     height: 100vh;
     background: url('../IMG/Hero/IMG_2438.HEIC') center/cover no-repeat fixed;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -16,36 +29,27 @@ body {
     z-index: 1;
 }
 
-/* Hero Content Styling */
-.hero-content {
-    background: rgba(0, 0, 0, 0.5); /* Slight dark overlay for readability */
-    padding: 20px;
-    border-radius: 10px;
+#hero h1 {
+    font-size: 8rem;
+    line-height: .85;
+    margin-bottom: 8rem;
 }
 
-/* Wave Effect Styling */
-.wave-container {
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
+.discover-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #001F54;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
 }
 
-.wave-container svg {
-    display: block;
-    width: 100%;
-    height: 80px;
+.discover-btn:hover {
+    background-color: #0f6a87;
 }
-
-/* Mobile Optimization */
-@media (max-width: 768px) {
-    #hero {
-        background-attachment: scroll;
-    }
-}
-
-
 
 
 #cursor-dot {
@@ -63,6 +67,29 @@ body {
     transition: width 0.2s ease, height 0.2s ease;
 }
 
+.fancy {
+    position: relative;
+    white-space: nowrap;
+    font-size: 3rem;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+    &:after {
+        --deco-height: 0.3125em;
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: calc(var(--deco-height) * -1.5);
+        /* Adjust spacing if needed */
+        height: var(--deco-height);
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23a)'%3E%3Cpath d='M-17 30.5C-1 22 72-4 54 13 37.9 28.2-2.5 57.5 16 55.5s72-29 104-40' stroke='%23FFFFFF' stroke-width='10'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='a'%3E%3Cpath fill='%23fff' d='M0 0h100v64H0z'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+        background-size: auto 100%;
+        background-repeat: round;
+        background-position: 0em;
+    }
+}
+
 
 #visit {
     height: 75vh;
@@ -71,8 +98,7 @@ body {
     justify-content: center;
     padding: 2vh 5vw;
     background-color: #1282A2;
-    border-top-right-radius: 200px 10px;
-    border-top-left-radius: 300px 20px;
+
 }
 
 #visit .row {
@@ -343,42 +369,3 @@ p {
         font-size: 20px;
     }
 }
-
-
-     /* Full-page container */
-        .horizontal-scroll-container {
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Flexbox for horizontal scrolling */
-        .horizontal-scroll-content {
-            display: flex;
-            flex-wrap: nowrap;
-            width: 400vw; /* Adjust based on content */
-            height: 100vh;
-            transform: translateX(0);
-            transition: transform 0.3s ease-out;
-        }
-
-        /* Individual scroll items */
-        .scroll-item {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2rem;
-            font-weight: bold;
-            color: white;
-            text-transform: uppercase;
-            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
-            border-right: 2px solid white;
-        }
-
-        /* Add different colors */
-        .scroll-item:nth-child(2) { background: linear-gradient(45deg, #fbc2eb, #a6c1ee); }
-        .scroll-item:nth-child(3) { background: linear-gradient(45deg, #ffecd2, #fcb69f); }
-        .scroll-item:nth-child(4) { background: linear-gradient(45deg, #a1c4fd, #c2e9fb); }
