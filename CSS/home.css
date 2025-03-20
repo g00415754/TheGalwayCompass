@@ -74,6 +74,7 @@ body {
     font-weight: bold;
     display: inline-block;
     position: relative;
+
     &:after {
         --deco-height: 0.3125em;
         content: "";
@@ -98,8 +99,11 @@ body {
     justify-content: center;
     padding: 2vh 5vw;
     background-color: #1282A2;
-
+    border-top-right-radius: 50vw; /* Increased for a smoother curve */
+    border-bottom-right-radius: 50vw;
+    width: 99%;
 }
+
 
 #visit .row {
     display: flex;
@@ -110,12 +114,14 @@ body {
 
 /* H2 Styling */
 #visit h2 {
-    font-size: 2.5vw;
+    font-size: 5rem;
     /* Scales with screen size */
     text-align: left;
     margin-bottom: 2vh;
 }
-
+#visit p{
+    font-size: 1rem;
+}
 #visit h2,
 p {
     color: #fefcfb;
