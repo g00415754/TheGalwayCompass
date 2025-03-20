@@ -129,72 +129,75 @@ blockquote p {
     justify-content: center;
     padding: 2vh 5vw;
     background-color: #1282A2;
-    border-top-right-radius: 20vw; /* Increased for a smoother curve */
-    border-bottom-right-radius: 20vw;
-    width: 99%;
+    border-top-right-radius: 50vw; /* Increased for a smoother curve */
+    border-bottom-right-radius: 50vw;
+    width: 97%;
     font-family: 'Inter', Arial;
 }
-.highlight {
-    color: transparent;
-    -webkit-text-stroke: 2px white;
-  }
-  
-#visit .row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    width: 100%;
+/* General Styles */
+.galway-faq {
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
 }
 
-/* H2 Styling */
-#visit h2 {
-    font-size: 5rem;
-    /* Scales with screen size */
-    text-align: left;
-    margin-bottom: 2vh;
-}
-#visit p{
-    font-size: 1rem;
-}
-#visit h2,
-p {
-    color: #fefcfb;
-}
-
-/* Card Container */
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    /* Always 2 columns */
-    gap: 2vh;
-    /* Keep space proportional */
-    justify-content: center;
-}
-
-/* Card Styling */
-.card {
-    display: flex;
-    flex-direction: column;
+.galway-faq-header {
+    font-size: 2rem;
     text-align: center;
-    padding: 1vh;
+    color: #1d3557;
+    margin-bottom: 1.5rem;
 }
 
-.card-img-top {
-    height: 30vh;
-    /* Image scales proportionally */
-    object-fit: cover;
-
+/* Accordion Styles */
+.galway-faq-accordion {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: box-shadow 1s ease-in-out;
 }
 
-.card-body {
-    padding: 1vh;
-    font-size: 1vw;
-    /* Text scales */
+.galway-faq-accordion:not(:target):hover {
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 }
 
-.card-text {
-    color: #001F54;
+.galway-faq-title a {
+    display: block;
+    background: #e63946;
+    color: white;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
 }
+
+.galway-faq-title a:hover {
+    background: #d62839;
+}
+
+/* FAQ Content (Hidden by Default) */
+.galway-faq-content {
+    display: none;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* When Accordion is Open */
+.galway-faq-accordion:target .galway-faq-content {
+    display: block;
+}
+
+.galway-faq-wrapper {
+    padding: 0.5rem;
+}
+
+.galway-faq-accordion:target .galway-faq-title a {
+    background: #1d3557;
+    color: white;
+}
+
 
 .container.py-5.mt-5.mb-5 {
     padding-top: 5rem !important;
