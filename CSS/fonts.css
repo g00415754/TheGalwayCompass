@@ -35,7 +35,6 @@
   }
   .interesting-facts h1 span:nth-child(1) {
     font-family: "Proclamate Light", sans-serif;
-    text-transform: lowercase;
     color: #ffc863;
   }
   .interesting-facts h1 span:nth-child(1)::before {
@@ -83,3 +82,10 @@
     clip-path: polygon(0 24%, 100% 20%, 100% 86%, 0 82%);
   }
   
+
+
+  .toursText, .galleryText{
+    font-family: "Poppins", sans-serif;
+    font-size: 4rem;
+    letter-spacing: -0.3rem;
+  }
