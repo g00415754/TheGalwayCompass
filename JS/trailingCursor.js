@@ -41,3 +41,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   animateCursor();
 });
+
+
+// Apply animation to all sections with class "fade-in"
+gsap.utils.toArray(".fade-in").forEach((section) => {
+    gsap.from(section, {
+        opacity: 0,
+        y: 50, // Slight upward motion
+        scale: 0.95, // Slight scale-up for a smoother effect
+        duration: 1.2, // Duration of animation
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: section,
+            start: "top 80%", // Start when the element is 80% into view
+            toggleActions: "play none none reverse" // Smooth reanimation
+        }
+    });
+});
