@@ -3,7 +3,6 @@ body {
     background-color: #fefcfb;
     font-size: 16pt;
     height: 100%;
-    
 }
 
 .custom-navbar {
@@ -134,70 +133,6 @@ blockquote p {
     width: 97%;
     font-family: 'Inter', Arial;
 }
-/* General Styles */
-.galway-faq {
-    max-width: 800px;
-    margin: auto;
-    padding: 2rem;
-}
-
-.galway-faq-header {
-    font-size: 2rem;
-    text-align: center;
-    color: #1d3557;
-    margin-bottom: 1.5rem;
-}
-
-/* Accordion Styles */
-.galway-faq-accordion {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1rem;
-    overflow: hidden;
-    transition: box-shadow 1s ease-in-out;
-}
-
-.galway-faq-accordion:not(:target):hover {
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
-}
-
-.galway-faq-title a {
-    display: block;
-    background: #e63946;
-    color: white;
-    padding: 1rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.galway-faq-title a:hover {
-    background: #d62839;
-}
-
-/* FAQ Content (Hidden by Default) */
-.galway-faq-content {
-    display: none;
-    padding: 1rem;
-    font-size: 1rem;
-    color: #333;
-}
-
-/* When Accordion is Open */
-.galway-faq-accordion:target .galway-faq-content {
-    display: block;
-}
-
-.galway-faq-wrapper {
-    padding: 0.5rem;
-}
-
-.galway-faq-accordion:target .galway-faq-title a {
-    background: #1d3557;
-    color: white;
-}
-
 
 .container.py-5.mt-5.mb-5 {
     padding-top: 5rem !important;

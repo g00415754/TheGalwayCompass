@@ -1,0 +1,59 @@
+/* Full-height section */
+#bus-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: #1282A2;
+}
+
+/* Bootstrap row and columns */
+.bus-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bus-col {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Bus styling */
+.bus-container {
+    position: absolute;
+    left: -20vw; /* Starts slightly off-screen */
+}
+
+.bus-container img {
+    width: 50vw; /* Responsive */
+    transform: scaleX(-1); /* Flip horizontally */
+}
+
+/* Text content */
+.content-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem;
+    text-align: left;
+}
+
+.content-col h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.content-col p {
+    font-size: 1.2rem;
+}
+
+.content-col a{
+    text-decoration: none;
+    color: #1282A2;
+}

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="CSS/footer.css">
     <link rel="stylesheet" href="CSS/home.css">
     <link rel="stylesheet" href="CSS/fonts.css">
-    <link rel="stylesheet" href="CSS/accordian.css">
+    <link rel="stylesheet" href="CSS/bus.css">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -17,6 +17,8 @@
     <!-- Font Awesome for Social Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!--Fonts-->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Radley:ital@0;1&display=swap');
@@ -68,9 +70,14 @@
 
     <blockquote class="mt-5 mb-5">
         <p>
-            Discover Galway – where history, culture, and community come to life. Nestled along Ireland’s rugged west coast, Galway is a city of storytellers, musicians, and dreamers. Wander through its cobbled streets, uncover centuries-old landmarks, and immerse yourself in a vibrant arts and festival scene. Whether you're seeking must-visit attractions, upcoming events, or hidden local gems, this site is your gateway to all things Galway. Stay informed, explore more, and join the conversation in our chat space—because Galway is best experienced together!
+            Discover Galway – where history, culture, and community come to life. Nestled along Ireland’s rugged west
+            coast, Galway is a city of storytellers, musicians, and dreamers. Wander through its cobbled streets,
+            uncover centuries-old landmarks, and immerse yourself in a vibrant arts and festival scene. Whether you're
+            seeking must-visit attractions, upcoming events, or hidden local gems, this site is your gateway to all
+            things Galway. Stay informed, explore more, and join the conversation in our chat space—because Galway is
+            best experienced together!
         </p>
-    </blockquote>  
+    </blockquote>
 
     <section id="statistics" class="container py-5 mt-5 mb-5">
         <div class="row align-items-center">
@@ -138,7 +145,7 @@
         <div class="container">
             <div class="carousel-container">
                 <div id="multiCardCarousel" class="carousel slide" data-bs-ride="carousel">
-                    
+
                     <!-- Carousel inner -->
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -208,10 +215,12 @@
                     </div>
 
                     <!-- Carousel Controls -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#multiCardCarousel" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#multiCardCarousel"
+                        data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#multiCardCarousel" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#multiCardCarousel"
+                        data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     </button>
                 </div>
@@ -222,26 +231,94 @@
     <h2 class="text-center pb-5 mapText">Find them on the map</h2>
     <div id="galway-map" style="height: 80vh; width: 80%; margin: auto; border-radius: 20px;"></div>
 
+    <section id="bus-section" class="container-fluid mt-5">
+        <div class="row bus-row">
+            <!-- Bus Column -->
+            <div class="col-md-6 bus-col">
+                <div class="bus-container">
+                    <img src="IMG/bus.png" alt="Bus">
+                </div>
+            </div>
 
-   
+            <!-- Content Column -->
+            <div class="col-md-6 content-col">
+                <h2>Travelling to Galway City</h2>
+                <div class="accordion mt-3" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Travelling by Coach
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Getting to Galway City by coach is affordable, comfortable, and hassle-free. Major
+                                operators run frequent services from across Ireland. <br><br>
+                                📍 Arrives at: Galway Coach Station (Fairgreen Road), minutes from Eyre Square. <br><br>
+                                ⏳ Travel Times: <i class="fa-solid fa-arrow-right"></i> Dublin ~2.5 to 3 hrs <br><br>
+                                Plan your trip: <a href="https://www.citylink.ie">Citylink</a> | <a
+                                    href="https://www.buseireann.ie">Bus Éireann</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Travelling by Plane
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Flying is the fastest way to reach Galway, with Shannon Airport being the nearest
+                                international hub. <br><br>
+                                Nearest Airport: Shannon Airport (SNN) ~1 hr 15 min from Galway <br>
+                                <i class="fa-solid fa-arrows-rotate"></i> Other Options: Dublin Airport (DUB) ~2.5 hrs
+                                via coach <br><br>
 
+                                📍 Getting to Galway from Shannon: <br>
+                                <i class="fa-solid fa-bus"></i> Bus Éireann (Route 51) - Direct bus (~1 hr 30 min) <br>
+                                <i class="fa-solid fa-car-side"></i> Car Rental / Taxi - ~1 hr via M18 <br><br>
 
-    
+                                Plan your trip: <a href="https://www.shannonairport.ie">Shannon Airport</a> | <a
+                                    href="https://www.dublinairport.com">Dublin Airport</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Travelling via Aran Island Ferries
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                If you're visiting Galway from the Aran Islands, the Aran Island Ferries provide a
+                                scenic and reliable connection to the mainland. <br><br>
+                                📍 Inis Mór, Inis Meáin & Inis Oírr <i class="fa-solid fa-arrow-right"></i> Rossaveel
+                                Harbour (~40 min) <br>
+                                📍 Inis Mór <i class="fa-solid fa-arrow-right"></i> Galway City Dock (Seasonal, ~90 min)
+                                <br><br>
 
+                                Getting to Galway from Rossaveel: <br>
+                                <i class="fa-solid fa-bus"></i> Shuttle Bus: Direct coach to Galway City (~1 hr) <br>
+                                <i class="fa-solid fa-car-side"></i> Drive: ~45 min via R336 <br><br>
 
-
-
-    <section id="visit" class="mt-5 mb-5">
-        <div class="container">
-            
-            
-                
+                                Plan your trip: <a href="https://www.aranislandferries.com">Aran Island Ferries</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
 
     <section id="help">
-        <div class="section-header">
+        <div class="section-header mt-5">
             <h2>How We Can Help</h2>
             <p>Lorem ipsum dolor sit amet</p>
         </div>
@@ -329,7 +406,7 @@
     <script src="JS/trailingCursor.js"></script>
     <script src="JS/heroText.js"></script>
     <script src="JS/galwayMap.js"></script>
-    <script src="JS/instaCarousel.js"></script>
+    <script src="JS/bus.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
