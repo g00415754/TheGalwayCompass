@@ -446,3 +446,66 @@ blockquote p {
     z-index: 1;
 }
 
+.timeline-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Timeline Line */
+.timeline-svg {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 100%;
+    z-index: 0;
+}
+
+.timeline-svg path {
+    stroke: #1282A2;
+    stroke-width: 8;
+    fill: transparent;
+    stroke-linecap: round;
+}
+
+/* Timeline Items */
+.timeline-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 80px 0;
+    position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+
+.timeline-content {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 40%;
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-item img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-item:nth-child(odd) .timeline-dot {
+    left: calc(50% + 25px);
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: calc(50% - 25px);
+}
