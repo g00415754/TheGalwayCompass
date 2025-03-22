@@ -483,6 +483,11 @@ blockquote p {
     flex-direction: row-reverse;
 }
 
+.timeline-item h3{
+    color:#001F54;
+    font-family: 'Poppins';
+}
+
 .timeline-content {
     background: white;
     padding: 15px;
