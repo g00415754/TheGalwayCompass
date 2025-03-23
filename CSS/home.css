@@ -46,6 +46,7 @@ body {
     font-weight: bold;
     border-radius: 8px;
     transition: 0.3s ease-in-out;
+    margin-top: 2rem;
 }
 
 .discover-btn:hover {
@@ -81,14 +82,17 @@ blockquote p {
 @media (max-width: 1200px) {
     #hero h1, #history-header h1 {
         font-size: 6rem;
-        margin-bottom: 6rem;
+        margin-bottom: 8rem;
     }
 }
 
 @media (max-width: 992px) {
     #hero h1, #history-header h1 {
         font-size: 5rem;
-        margin-bottom: 5rem;
+        margin-bottom: 8rem;
+    }
+    #hero p{
+        font-size: 1.3rem;
     }
     .discover-btn {
         font-size: 16px;
@@ -99,13 +103,17 @@ blockquote p {
 @media (max-width: 768px) {
     #hero {
         height: 80vh;
+        background: url("../IMG/Hero/hero-mobile.heic") center/cover no-repeat fixed;
     }
     #hero h1, #history-header h1 {
         font-size: 4rem;
-        margin-bottom: 4rem;
+        margin-bottom: 8rem;
+    }
+    #hero p{
+        font-size: 1rem;
     }
     .discover-btn {
-        font-size: 14px;
+        font-size: 1rem;
         padding: 8px 16px;
     }
     blockquote p:first-child:first-letter {
@@ -119,13 +127,17 @@ blockquote p {
 @media (max-width: 576px) {
     #hero {
         height: 70vh;
+        background: url("../IMG/Hero/hero-mobile.heic") center/cover no-repeat fixed;
     }
     #hero h1, #history-header h1 {
-        font-size: 3rem;
-        margin-bottom: 3rem;
+        font-size: 4rem;
+        margin-bottom: 8rem;
+    }
+    #hero p{
+        font-size: 1rem;
     }
     .discover-btn {
-        font-size: 12px;
+        font-size: 1rem;
         padding: 6px 12px;
     }
     blockquote p:first-child:first-letter {
