@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Radley:ital@0;1&display=swap');
 body {
     background-color: #fefcfb;
     font-size: 16pt;
@@ -20,7 +21,7 @@ body {
     position: relative;
     width: 100%;
     height: 100vh;
-    background: url('../IMG/Hero/IMG_2438.HEIC') center/cover no-repeat fixed;
+    background: url('../IMG/Hero/IMG_2438.jpg') center/cover no-repeat fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,7 +104,7 @@ blockquote p {
 @media (max-width: 768px) {
     #hero {
         height: 80vh;
-        background: url("../IMG/Hero/hero-mobile.heic") center/cover no-repeat fixed;
+        background: url("../IMG/Hero/CE614894-4AAA-4E15-A8A3-7D64A3B8EF5C_1_201_a.jpg") center/cover no-repeat fixed;
     }
     #hero h1, #history-header h1 {
         font-size: 4rem;
@@ -127,7 +128,7 @@ blockquote p {
 @media (max-width: 576px) {
     #hero {
         height: 70vh;
-        background: url("../IMG/Hero/hero-mobile.heic") center/cover no-repeat fixed;
+        background: url("../IMG/Hero/CE614894-4AAA-4E15-A8A3-7D64A3B8EF5C_1_201_a.jpg") center/cover no-repeat fixed;
     }
     #hero h1, #history-header h1 {
         font-size: 4rem;
@@ -508,7 +509,7 @@ blockquote p {
     width: 90%;
     margin: auto;
     height: 70vh;
-    background: url('../IMG/Hero/IMG_2358.HEIC') center/cover no-repeat fixed;
+    background: url('../IMG/Hero/IMG_2358.jpg') center/cover no-repeat fixed;
     border-radius: 20vh;
     display: flex;
     flex-direction: column;
@@ -604,7 +605,7 @@ blockquote p {
 }
 .signup-image {
     width: 70%;
-    background: url('../IMG/Hero/IMG_2419.HEIC') no-repeat center center;
+    background: url('../IMG/Hero/IMG_2419.jpg') no-repeat center center;
     background-size: cover;
 }
 .signup-form-container {
@@ -668,7 +669,7 @@ blockquote p {
 }
 .login-image {
     width: 70%;
-    background: url('../IMG/Hero/IMG_2442.HEIC') no-repeat center center;
+    background: url('../IMG/Hero/IMG_2442.jpg') no-repeat center center;
     background-size: cover;
 }
 .login-form-container {
