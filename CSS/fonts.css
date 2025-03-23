@@ -33,6 +33,33 @@
     padding: 0.2em;
     z-index: -1;
   }
+
+  /* Responsive Design for Interesting Facts Heading */
+
+@media (max-width: 1200px) {
+  .interesting-facts h1 {
+      font-size: 6rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .interesting-facts h1 {
+      font-size: 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .interesting-facts h1 {
+      font-size: 4rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .interesting-facts h1 {
+      font-size: 4rem;
+  }
+}
+
   .interesting-facts h1 span:nth-child(1) {
     font-family: "Proclamate Light", sans-serif;
     color: #ffc863;
