@@ -1,3 +1,57 @@
+<?php
+session_start();
+
+// Database connection (update with your local MAMP MySQL details)
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$database = "thegalwaycompass";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
+
+    // Prepare and execute SQL query to fetch user data
+    $stmt = $conn->prepare("SELECT id, first_name, last_name, email, password_hash FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        // User found, now verify password
+        $user = $result->fetch_assoc();
+        if (password_verify($password, $user['password_hash'])) {
+            // Password is correct, log the user in
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['first_name'] = $user['first_name'];
+            $_SESSION['last_name'] = $user['last_name'];
+            $_SESSION['email'] = $user['email'];
+            
+            // Redirect to a welcome or dashboard page
+            header("Location: index.html");
+            exit();
+        } else {
+            $error_message = "Invalid password.";
+        }
+    } else {
+        $error_message = "No account found with that email.";
+    }
+
+    $stmt->close();
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +61,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/home.css">
     <link rel="stylesheet" href="CSS/footer.css">
-
-     <!-- Font Awesome for Social Icons -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
 </head>
 <body>
 
@@ -20,8 +70,7 @@
             <a class="navbar-brand hover-effect" href="index.html">
                 <video src="IMG/Logo/AnimatedLogo.mp4" class="img-fluid" style="width: 150px;" autoplay loop muted></video>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -33,10 +82,9 @@
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="#">Help</a></li>
                 </ul>
                 <ul class="d-flex navbar-nav">
-                    <li><button class="btn gabarito hover-effect me-2 mb-2"
-                            style="border-color: #1282A2; color: #1282A2">Log In</button></li>
-                    <li><button class="btn gabarito hover-effect me-2"
-                        style="background-color: #1282A2"><a href="signup.php" style="color: #fff; text-decoration: none;">Sign Up</a></button></li>
+                    <li><button class="btn gabarito hover-effect me-2 mb-2" style="border-color: #1282A2; color: #1282A2">Log In</button></li>
+                    <li><button class="btn gabarito hover-effect me-2" style="background-color: #1282A2"><a href="signup.php" style="color: #fff; text-decoration: none;">Sign Up</a></button></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -59,6 +107,12 @@
             <div class="signup-link">
                 <p>Don't have an account? <a href="signup.php">Sign up here</a></p>
             </div>
+
+            <?php
+            if (isset($error_message)) {
+                echo "<div class='alert alert-danger mt-3'>$error_message</div>";
+            }
+            ?>
         </div>
     </div>
 
@@ -103,7 +157,6 @@
             </div>
         </footer>
     </div>
-
 
     <script src="JS/trailingCursor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

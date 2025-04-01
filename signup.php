@@ -85,7 +85,7 @@ $conn->close();
                 </ul>
                 <ul class="d-flex navbar-nav">
                     <li><button class="btn gabarito hover-effect me-2 mb-2"
-                            style="border-color: #1282A2; color: #1282A2"><a href="log-in.html" style="color: #1282A2; text-decoration: none;">Log In</a></button></li>
+                            style="border-color: #1282A2; color: #1282A2"><a href="login.php" style="color: #1282A2; text-decoration: none;">Log In</a></button></li>
                     <li><button class="btn gabarito hover-effect me-2"
                             style="background-color: #1282A2; color: #fff">Sign Up</button></li>
                 </ul>
@@ -126,7 +126,7 @@ $conn->close();
                 <button type="submit" class="btn signup-btn-primary w-100">Sign Up</button>
             </form>
             <div class="login-link">
-                <p>Already have an account? <a href="log-in.html">Log in here</a></p>
+                <p>Already have an account? <a href="login.php">Log in here</a></p>
             </div>
         </div>
     </div>
