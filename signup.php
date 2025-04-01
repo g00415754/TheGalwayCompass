@@ -1,3 +1,51 @@
+<?php
+// Database connection (update with your local MAMP MySQL details)
+$servername = "localhost";  // MAMP default is localhost
+$username = "root";  // MAMP default MySQL username
+$password = "root";  // MAMP default MySQL password
+$database = "thegalwaycompass";  // Your local MAMP database name
+
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $first_name = trim($_POST['first_name']);
+    $last_name = trim($_POST['last_name']);
+    $username = trim($_POST['username']);
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    // Validate password match
+    if ($password !== $confirm_password) {
+        die("Error: Passwords do not match!");
+    }
+
+    // Hash the password for security
+    $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+    // Insert user into database using prepared statement
+    $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, username, email, password_hash) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssss", $first_name, $last_name, $username, $email, $password_hash);
+
+    if ($stmt->execute()) {
+        echo "Registration successful! <a href='log-in.html'>Log in here</a>";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
+}
+
+$conn->close();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
