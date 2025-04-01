@@ -1,4 +1,7 @@
 <?php
+// Start the session
+session_start();
+
 // Database connection (update with your local MAMP MySQL details)
 $servername = "localhost";  // MAMP default is localhost
 $username = "root";  // MAMP default MySQL username
@@ -34,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sssss", $first_name, $last_name, $username, $email, $password_hash);
 
     if ($stmt->execute()) {
-        echo "Registration successful! <a href='log-in.html'>Log in here</a>";
+        echo "Registration successful! <a href='login.php'>Log in here</a>";
     } else {
         echo "Error: " . $stmt->error;
     }
@@ -68,7 +71,7 @@ $conn->close();
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg custom-navbar">
         <div class="container-fluid">
-            <a class="navbar-brand hover-effect" href="index.html">
+            <a class="navbar-brand hover-effect" href="index.php">
                 <video src="IMG/Logo/AnimatedLogo.mp4" class="img-fluid" style="width: 150px;" autoplay loop muted></video>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -76,18 +79,28 @@ $conn->close();
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link hover-effect gabarito" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link gabarito hover-effect" href="history.html">History</a></li>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link hover-effect gabarito" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link gabarito hover-effect" href="history.php">History</a></li>
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="#">Events</a></li>
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="#">Chat</a></li>
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="#">Help</a></li>
                 </ul>
                 <ul class="d-flex navbar-nav">
-                    <li><button class="btn gabarito hover-effect me-2 mb-2"
-                            style="border-color: #1282A2; color: #1282A2"><a href="login.php" style="color: #1282A2; text-decoration: none;">Log In</a></button></li>
-                    <li><button class="btn gabarito hover-effect me-2"
-                            style="background-color: #1282A2; color: #fff">Sign Up</button></li>
+                    <?php if (isset($_SESSION['first_name'])): ?>
+                        <li class="nav-item">
+                            <span class="navbar-text me-4" style="border-color: #1282A2; color: #1282A2"><?php echo ucfirst($_SESSION['first_name']); ?></span>
+                        </li>
+                        <li><a class="btn gabarito hover-effect me-2 mb-2" href="logout.php"
+                                style="border-color: #1282A2; color: #1282A2">Log Out</a></li>
+                    <?php else: ?>
+                        <li><button class="btn gabarito hover-effect me-2 mb-2"
+                                style="border-color: #1282A2; color: #1282A2"><a href="login.php"
+                                    style="color: #1282A2; text-decoration: none;">Log In</a></button></li>
+                        <li><button class="btn gabarito hover-effect me-2" style="background-color: #1282A2"><a
+                                    href="signup.php" style="color: #fff; text-decoration: none;">Sign Up</a></button></li>
+                    <?php endif; ?>
+
                 </ul>
             </div>
         </div>

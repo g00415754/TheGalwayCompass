@@ -1,3 +1,7 @@
+<?php
+// Start the session
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +23,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
 </head>
 
 <body>
@@ -27,7 +32,8 @@
     <nav class="navbar navbar-expand-lg custom-navbar">
         <div class="container-fluid">
             <a class="navbar-brand hover-effect" href="#">
-                <video src="IMG/Logo/AnimatedLogo.mp4" class="img-fluid" style="width: 150px;" autoplay loop muted playsinline controlslist="nodownload"></video>
+                <video src="IMG/Logo/AnimatedLogo.mp4" class="img-fluid" style="width: 150px;" autoplay loop muted
+                    playsinline controlslist="nodownload"></video>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent">
@@ -37,16 +43,26 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link hover-effect gabarito active" href="#"
                             style="color: #001F54;">Home</a></li>
-                    <li class="nav-item"><a class="nav-link gabarito hover-effect" href="history.html">History</a></li>
+                    <li class="nav-item"><a class="nav-link gabarito hover-effect" href="history.php">History</a></li>
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="#">Events</a></li>
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="#">Chat</a></li>
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="#">Help</a></li>
                 </ul>
                 <ul class="d-flex navbar-nav">
-                    <li><button class="btn gabarito hover-effect me-2 mb-2"
-                        style="border-color: #1282A2; color: #1282A2"><a href="login.php" style="color: #1282A2; text-decoration: none;">Log In</a></button></li>
-                    <li><button class="btn gabarito hover-effect me-2"
-                            style="background-color: #1282A2"><a href="signup.php" style="color: #fff; text-decoration: none;">Sign Up</a></button></li>
+                    <?php if (isset($_SESSION['first_name'])): ?>
+                        <li class="nav-item">
+                            <span class="navbar-text me-4" style="border-color: #1282A2; color: #1282A2"><?php echo ucfirst($_SESSION['first_name']); ?></span>
+                        </li>
+                        <li><a class="btn gabarito hover-effect me-2 mb-2" href="logout.php"
+                                style="border-color: #1282A2; color: #1282A2">Log Out</a></li>
+                    <?php else: ?>
+                        <li><button class="btn gabarito hover-effect me-2 mb-2"
+                                style="border-color: #1282A2; color: #1282A2"><a href="login.php"
+                                    style="color: #1282A2; text-decoration: none;">Log In</a></button></li>
+                        <li><button class="btn gabarito hover-effect me-2" style="background-color: #1282A2"><a
+                                    href="signup.php" style="color: #fff; text-decoration: none;">Sign Up</a></button></li>
+                    <?php endif; ?>
+
                 </ul>
             </div>
         </div>
@@ -217,7 +233,8 @@
         </div>
     </section>
 
-    <h2 class="text-center pb-5 mapText fade-in">Find them <span style="color: #1282A2">(and more)</span> on our interactive map
+    <h2 class="text-center pb-5 mapText fade-in">Find them <span style="color: #1282A2">(and more)</span> on our
+        interactive map
     </h2>
     <div id="galway-map" style="height: 80vh; width: 80%; margin: auto; border-radius: 20px;"></div>
 
@@ -348,7 +365,7 @@
 
 
     <section id="gallery" class="mt-5 fade-in">
-        <h2 class="galleryText text-center" >Take a look at our Gallery</h2>
+        <h2 class="galleryText text-center">Take a look at our Gallery</h2>
         <div class="marquee-container">
             <div class="marquee">
                 <img src="IMG/Hero/IMG_2440.jpg">
@@ -406,7 +423,8 @@
             </div>
         </div>
 
-        <p class="text-center mb-5 mt-4 fade-in" style="font-family: Poppins, sans-serif;">Find more gorgeous content of Galway city using <span style="color: #1282A2">#GalwayCity</span> on all social media platforms.</p>
+        <p class="text-center mb-5 mt-4 fade-in" style="font-family: Poppins, sans-serif;">Find more gorgeous content of
+            Galway city using <span style="color: #1282A2">#GalwayCity</span> on all social media platforms.</p>
     </section>
 
 
