@@ -66,11 +66,20 @@
         <!-- Month and Year Picker -->
         <input type="text" id="rangePicker" class="form-control mb-4" placeholder="Select a date range">
 
+        <!-- Category Filter -->
+        <div class="mb-3">
+            <label for="categoryFilter" class="form-label">Filter by Category</label>
+            <select id="categoryFilter" class="form-select">
+                <option value="">All Categories</option>
+                <!-- Categories will be populated dynamically -->
+            </select>
+        </div>
 
         <h2>Upcoming Events:</h2>
         <div id="events-container" class="row">
             <!-- Cards will be appended here -->
         </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

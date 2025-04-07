@@ -1,20 +1,35 @@
+// Fetch categories from the server and populate the dropdown
+window.onload = function () {
+    fetch('fetch_events.php')  // Call to the new PHP endpoint for categories
+        .then(response => response.json())
+        .then(data => {
+            const categoryDropdown = document.getElementById("categoryFilter");
+            data.forEach(category => {
+                const option = document.createElement("option");
+                option.value = category.event_category;
+                option.textContent = category.event_category;
+                categoryDropdown.appendChild(option);
+            });
+        })
+        .catch(err => console.error("Error fetching categories:", err));
+};
+
+// Flatpickr date range picker
 flatpickr("#rangePicker", {
     mode: "range",
     dateFormat: "Y-m-d",
-    onChange: function(selectedDates) {
+    onChange: function (selectedDates) {
         if (selectedDates.length === 2) {
             const start = selectedDates[0].toISOString().slice(0, 10);
             const end = selectedDates[1].toISOString().slice(0, 10);
 
-            console.log("Fetching events from:", start, "to:", end);
+            // Get selected category from the dropdown
+            const category = document.getElementById("categoryFilter").value;
 
-            fetch(`fetch_events.php?start=${start}&end=${end}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Network response was not ok");
-                    }
-                    return response.json();
-                })
+            console.log("Fetching events from:", start, "to:", end, "with category:", category);
+
+            fetch(`fetch_events.php?start=${start}&end=${end}&category=${category}`)
+                .then(response => response.json())
                 .then(data => {
                     console.log("Received data:", data);
                     displayEvents(data);
@@ -23,7 +38,6 @@ flatpickr("#rangePicker", {
         }
     }
 });
-
 
 function displayEvents(events) {
     const container = document.getElementById("events-container");
@@ -40,6 +54,7 @@ function displayEvents(events) {
         card.innerHTML = `
             <div class="card shadow-sm rounded-lg">
                 <div class="card-body">
+                    <img src="${event.event_image}">
                     <h5 class="card-title text-primary">${event.event_name}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${event.event_date}</h6>
                     <p class="card-text">${event.event_description}</p>
@@ -50,7 +65,7 @@ function displayEvents(events) {
         `;
         container.appendChild(card);
     });
-    
-    
+
+
 }
 

@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 // Return JSON
 header('Content-Type: application/json');
 
-// Connect to DB
+// Database connection
 $host = 'localhost';
 $dbname = 'thegalwaycompass';
 $username = 'root';
@@ -24,28 +24,52 @@ try {
     exit();
 }
 
-// Get events within range
-if (isset($_GET['start']) && isset($_GET['end'])) {
-    $start = $_GET['start'];
-    $end = $_GET['end'];
+// Fetch distinct categories from events table (for filtering)
+$stmt = $pdo->prepare("SELECT DISTINCT event_category FROM upcoming_events");
+$stmt->execute();
+$categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $stmt = $pdo->prepare("SELECT * FROM upcoming_events WHERE event_date BETWEEN :start AND :end ORDER BY event_date ASC");
+// Get events based on the start and end dates, and optional category filter
+$start = isset($_GET['start']) ? $_GET['start'] : null;
+$end = isset($_GET['end']) ? $_GET['end'] : null;
+$category = isset($_GET['category']) ? $_GET['category'] : null;
+
+// Build SQL query with filters
+$sql = "SELECT * FROM upcoming_events WHERE 1=1"; // Default condition to simplify adding more filters
+
+// Add date range filter if available
+if ($start && $end) {
+    $sql .= " AND event_date BETWEEN :start AND :end";
+}
+
+// Add category filter if available
+if ($category) {
+    $sql .= " AND event_category = :category";
+}
+
+$sql .= " ORDER BY event_date ASC";
+
+// Prepare and execute the query
+$stmt = $pdo->prepare($sql);
+
+// Bind parameters
+if ($start && $end) {
     $stmt->bindParam(':start', $start);
     $stmt->bindParam(':end', $end);
-    $stmt->execute();
-} else {
-    // Default: show all events from today onward
-    $stmt = $pdo->prepare("SELECT * FROM upcoming_events WHERE event_date >= CURDATE() ORDER BY event_date ASC");
-    $stmt->execute();
 }
+if ($category) {
+    $stmt->bindParam(':category', $category);
+}
+
+$stmt->execute();
 
 // Fetch events
 $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Check if events were fetched and return them as JSON
+// Return events as JSON
 if ($events) {
     echo json_encode($events);
 } else {
-    echo json_encode(['error' => 'No events found for the given range.']);
+    echo json_encode(['error' => 'No events found for the given filters.']);
 }
 ?>
