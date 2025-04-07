@@ -44,7 +44,7 @@ session_start();
                     <li class="nav-item"><a class="nav-link hover-effect gabarito active" href="#"
                             style="color: #001F54;">Home</a></li>
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="history.php">History</a></li>
-                    <li class="nav-item"><a class="nav-link gabarito hover-effect" href="#">Events</a></li>
+                    <li class="nav-item"><a class="nav-link gabarito hover-effect" href="events.php">Events</a></li>
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="#">Chat</a></li>
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="#">Help</a></li>
                 </ul>

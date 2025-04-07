@@ -1,0 +1,48 @@
+/* Custom CSS for the event cards */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Adds a hover effect to lift the card */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Increases shadow effect on hover */
+}
+
+.card-body {
+    background-color: #f8f9fa; /* Light background for a clean look */
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.card-subtitle {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Optional: Add a subtle border at the bottom of the card */
+.card-body p {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.card-text small {
+    font-size: 0.85rem;
+}
+
+.text-muted {
+    color: #6c757d !important; /* Ensure muted text is visible and matches the card theme */
+}
+
+/* Optional: Add a bit of margin to the container */
+#events-container {
+    margin-top: 20px;
+}

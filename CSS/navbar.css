@@ -1,0 +1,11 @@
+/* Navbar Styles */
+.custom-navbar {
+    max-width: 90%;
+    margin: 10px auto;
+    background-color: #fefcfb; /* Adjust if needed */
+}
+
+.nav-link {
+    color: #1282A2;
+    font-size: 1rem;
+}
