@@ -54,7 +54,7 @@ function displayEvents(events) {
         card.innerHTML = `
             <div class="card shadow-sm rounded-lg">
                 <div class="card-body">
-                    <img src="${event.event_image}">
+                    <img src="${event.event_image}" class="card-img-top" style="object-fit: cover; width: 100%; height: 200px; border-radius: 0.25rem;">
                     <h5 class="card-title text-primary">${event.event_name}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${event.event_date}</h6>
                     <p class="card-text">${event.event_description}</p>

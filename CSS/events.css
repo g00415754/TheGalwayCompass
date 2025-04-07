@@ -1,3 +1,8 @@
+body {
+    background-color: #fefcfb;
+    font-size: 16pt;
+    height: 100%;
+}
 /* Custom CSS for the event cards */
 .card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -7,7 +12,10 @@
     transform: translateY(-5px); /* Adds a hover effect to lift the card */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Increases shadow effect on hover */
 }
-
+.card img{
+    height: auto;
+    margin-bottom: 20px;
+}
 .card-body {
     background-color: #f8f9fa; /* Light background for a clean look */
 }
@@ -46,3 +54,4 @@
 #events-container {
     margin-top: 20px;
 }
+

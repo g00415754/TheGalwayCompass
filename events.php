@@ -1,3 +1,7 @@
+<?php
+// Start the session
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,20 +64,38 @@
         </div>
     </nav>
 
-    <div class="events_section ps-5 pe-5">
-        <h1>Events in Galway</h1>
+    <div class="events_section ps-5 pe-5 pt-4">
+    <div class="interesting-facts">
+                    <h1 style="font-size: 5rem;">
+                        <span>E</span>
+                        <span>V</span>
+                        <span>E</span>
+                        <span>N</span>
+                        <span>T</span>
+                        <span>S</span>
+                         in Galway
+                    </h1>
+                </div>
 
-        <!-- Month and Year Picker -->
-        <input type="text" id="rangePicker" class="form-control mb-4" placeholder="Select a date range">
 
-        <!-- Category Filter -->
-        <div class="mb-3">
-            <label for="categoryFilter" class="form-label">Filter by Category</label>
-            <select id="categoryFilter" class="form-select">
-                <option value="">All Categories</option>
-                <!-- Categories will be populated dynamically -->
-            </select>
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Month and Year Picker -->
+                <label for="RangeFilter" class="form-label">Filter by Date Range</label>
+                <input type="text" id="rangePicker" class="form-control mb-4" placeholder="Select a date range">
+            </div>
+            <div class="col-md-6">
+                <!-- Category Filter -->
+                <div class="mb-3">
+                    <label for="categoryFilter" class="form-label">Filter by Category</label>
+                    <select id="categoryFilter" class="form-select">
+                        <option value="">All Categories</option>
+                        <!-- Categories will be populated dynamically -->
+                    </select>
+                </div>
+            </div>
         </div>
+
 
         <h2>Upcoming Events:</h2>
         <div id="events-container" class="row">
