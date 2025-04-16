@@ -83,7 +83,7 @@ $conn->close();
                     <li class="nav-item"><a class="nav-link hover-effect gabarito" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="history.php">History</a></li>
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="events.php">Events</a></li>
-                    <li class="nav-item"><a class="nav-link gabarito hover-effect" href="#">Chat</a></li>
+                    <li class="nav-item"><a class="nav-link gabarito hover-effect" href="chat.php">Chat</a></li>
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="#">Help</a></li>
                 </ul>
                 <ul class="d-flex navbar-nav">
