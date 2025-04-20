@@ -15,6 +15,10 @@ if (!isset($_SESSION['user_id'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/chat.css">
     <link rel="stylesheet" href="CSS/navbar.css">
+    <link rel="stylesheet" href="CSS/footer.css">
+    <link rel="stylesheet" href="CSS/fonts.css">
+    <!-- Add Font Awesome for the trash bin icon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -37,7 +41,7 @@ if (!isset($_SESSION['user_id'])) {
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="events.php">Events</a></li>
                     <li class="nav-item"><a class="nav-link gabarito hover-effect active" href="#"
                             style="color: #001F54;">Chat</a></li>
-                    <li class="nav-item"><a class="nav-link gabarito hover-effect" href="#">Help</a></li>
+                    <li class="nav-item"><a class="nav-link gabarito hover-effect" href="faq.php">Help</a></li>
                 </ul>
                 <ul class="d-flex navbar-nav">
                     <?php if (isset($_SESSION['first_name'])): ?>
@@ -60,8 +64,16 @@ if (!isset($_SESSION['user_id'])) {
     </nav>
 
     <div class="container">
-
-        <h2 class="mb-4">Chat to Others</h2>
+        <div class="interesting-facts" style="text-align: center">
+            <h1>
+                <span>C</span>
+                <span>H</span>
+                <span>A</span>
+                <span>T</span>
+                to 
+                <span>O</span>thers
+            </h1>
+        </div>
         <div id="chat-box" class="mb-4"></div>
 
         <form id="chat-form" enctype="multipart/form-data">
@@ -71,7 +83,8 @@ if (!isset($_SESSION['user_id'])) {
             <div class="mb-3">
                 <input type="file" name="file" id="file" class="form-control">
             </div>
-            <button type="submit" class="btn" style="background-color: #1282A2; color: #fff;">Send</button>
+            <button type="submit" class="btn"
+                style="background-color: #1282A2; color: #fff; float: right;">Send</button>
         </form>
     </div>
 
@@ -109,13 +122,22 @@ if (!isset($_SESSION['user_id'])) {
                                 content = `<video controls src="${msg.message}"></video>`;
                             }
 
+                            // Add delete button for user's own messages
+                            const deleteButton = (msg.user_id === <?php echo $_SESSION['user_id']; ?>)
+                                ? `<button class="delete-btn" title="Delete" data-id="${msg.id}">
+                <i class="fas fa-trash-alt" style="color: white;"></i>
+           </button>`
+                                : '';
+
                             div.innerHTML = `
-                                <div class="message-content">
-                                    <span class="username">${msg.username}</span>
-                                    <span class="timestamp">[${new Date(msg.sent_at).toLocaleString()}]</span>
-                                    <div class="content">${content}</div>
-                                </div>
-                            `;
+                        <div class="message-content">
+                            <span class="username">${msg.username}</span>
+                            <span class="timestamp">[${new Date(msg.sent_at).toLocaleString()}]</span>
+                            <div class="content">${content}</div>
+                            ${deleteButton}
+                        </div>
+                    `;
+
                             chatBox.appendChild(div);
                             lastMessageId = msg.id; // Update the last message ID
                         });
@@ -151,7 +173,73 @@ if (!isset($_SESSION['user_id'])) {
         loadMessages();
         setInterval(loadMessages, 3000); // Check for new messages every 3 seconds
 
+        // Use event delegation to listen for delete button clicks
+        chatBox.addEventListener('click', function (e) {
+            if (e.target.closest('.delete-btn')) {
+                const messageId = e.target.closest('.delete-btn').getAttribute('data-id');
+
+                if (confirm("Are you sure you want to delete this message?")) {
+                    fetch('delete_message.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: `message_id=${messageId}`
+                    })
+                        .then(res => res.text())
+                        .then(data => {
+                            if (data.trim() === 'success') {
+                                e.target.closest('.message').remove();
+                            } else {
+                                alert('Failed to delete the message.');
+                            }
+                        });
+                }
+            }
+        });
+
     </script>
+
+    <br><br><br>
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#">Web design</a></li>
+                            <li><a href="#">Development</a></li>
+                            <li><a href="#">Hosting</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>Company Name</h3>
+                        <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus.
+                            Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget
+                            velit pulvinar dictum vel in justo.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="socials">
+                            <ul>
+                                <li><a href="#"><i class="fab fa-facebook-f icon"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter icon"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in icon"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google-plus-g icon"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <p class="copyright">The Galway Compass © 2025</p>
+            </div>
+        </footer>
+    </div>
 </body>
 
 </html>

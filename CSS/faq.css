@@ -1,0 +1,40 @@
+.parallax {
+    background-image: url('../IMG/Hero/IMG_2236.jpg');
+    min-height: 400px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.faq-section {
+    padding: 50px 0;
+}
+
+.faq-question {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    transition: background-color 0.3s;
+}
+
+.faq-question:hover {
+    background-color: #e9ecef;
+}
+
+.faq-question h4 {
+    margin: 0;
+    color: #001f54;
+}
+
+.faq-answer {
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}

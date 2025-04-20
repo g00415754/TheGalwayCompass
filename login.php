@@ -61,6 +61,10 @@ $conn->close();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/home.css">
     <link rel="stylesheet" href="CSS/footer.css">
+
+    <!-- Font Awesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 <body>
 
@@ -79,7 +83,7 @@ $conn->close();
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="history.php">History</a></li>
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="events.php">Events</a></li>
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="chat.php">Chat</a></li>
-                    <li class="nav-item"><a class="nav-link gabarito hover-effect" href="#">Help</a></li>
+                    <li class="nav-item"><a class="nav-link gabarito hover-effect" href="faq.php">Help</a></li>
                 </ul>
                 <ul class="d-flex navbar-nav">
                     <?php if (isset($_SESSION['first_name'])): ?>

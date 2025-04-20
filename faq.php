@@ -1,25 +1,25 @@
 <?php
-// Start the session
 session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php"); // Redirect to login if not logged in
+    exit();
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>The Galway Compass - Events</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help/FAQ - Galway Compass</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/footer.css">
     <link rel="stylesheet" href="CSS/navbar.css">
-    <link rel="stylesheet" href="CSS/fonts.css">
-    <link rel="stylesheet" href="CSS/events.css">
+    <link rel="stylesheet" href="CSS/faq.css">
+    <link rel="stylesheet" href="CSS/footer.css">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Font Awesome for Social Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
 
 </head>
 
@@ -40,10 +40,10 @@ session_start();
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link hover-effect gabarito" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="history.php">History</a></li>
-                    <li class="nav-item"><a class="nav-link gabarito hover-effect active" style="color: #001F54;"
-                            href="#">Events</a></li>
+                    <li class="nav-item"><a class="nav-link gabarito hover-effect" href="events.php">Events</a></li>
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="chat.php">Chat</a></li>
-                    <li class="nav-item"><a class="nav-link gabarito hover-effect" href="#">Help</a></li>
+                    <li class="nav-item"><a class="nav-link gabarito hover-effect active" href="faq.php"
+                            style="color: #001F54;">Help</a></li>
                 </ul>
                 <ul class="d-flex navbar-nav">
                     <?php if (isset($_SESSION['first_name'])): ?>
@@ -65,44 +65,75 @@ session_start();
         </div>
     </nav>
 
-    <div class="events_section ps-5 pe-5 pt-4">
-    <div class="interesting-facts">
-                    <h1 style="font-size: 5rem;">
-                        <span>E</span>
-                        <span>V</span>
-                        <span>E</span>
-                        <span>N</span>
-                        <span>T</span>
-                        <span>S</span>
-                         in Galway
-                    </h1>
-                </div>
+      <!-- Parallax Section -->
+      <div class="parallax">
+        <h2>Frequently Asked Questions</h2>
+    </div>
 
-
-        <div class="row">
-            <div class="col-md-6">
-                <!-- Month and Year Picker -->
-                <label for="RangeFilter" class="form-label">Filter by Date Range</label>
-                <input type="text" id="rangePicker" class="form-control mb-4" placeholder="Select a date range">
-            </div>
-            <div class="col-md-6">
-                <!-- Category Filter -->
-                <div class="mb-3">
-                    <label for="categoryFilter" class="form-label">Filter by Category</label>
-                    <select id="categoryFilter" class="form-select">
-                        <option value="">All Categories</option>
-                        <!-- Categories will be populated dynamically -->
-                    </select>
-                </div>
+    <!-- FAQ Content -->
+    <div class="container faq-section">
+        <div class="faq-question">
+            <h4>1. What is The Galway Compass?</h4>
+            <div class="faq-answer">
+                The Galway Compass is your ultimate guide to exploring the vibrant city of Galway, Ireland. We provide insights into its history, culture, local attractions, upcoming events, and more. Whether you’re a tourist or a local, we offer something for everyone.
             </div>
         </div>
 
-
-        <h2>Upcoming Events:</h2>
-        <div id="events-container" class="row">
-            <!-- Cards will be appended here -->
+        <div class="faq-question">
+            <h4>2. How can I participate in the live chat?</h4>
+            <div class="faq-answer">
+                To join the live chat, simply log in with your account. You’ll be able to chat with other tourists and locals, share your experiences, and get tips about things to do in Galway.
+            </div>
         </div>
 
+        <div class="faq-question">
+            <h4>3. What types of events can I find on this website?</h4>
+            <div class="faq-answer">
+                We feature a wide range of events happening in Galway, including cultural festivals, live music performances, theatre shows, local markets, and more. You can browse through different event categories and filter them by type and date.
+            </div>
+        </div>
+
+        <div class="faq-question">
+            <h4>4. Is there a way to get notified about upcoming events?</h4>
+            <div class="faq-answer">
+                Yes, you can sign up for event notifications! Simply create an account and opt-in to receive email updates about the latest events happening in Galway.
+            </div>
+        </div>
+
+        <div class="faq-question">
+            <h4>5. How do I book tickets for events in Galway?</h4>
+            <div class="faq-answer">
+                While our website provides information about events in Galway, we recommend checking the event pages for ticketing links or visiting the event organizers' websites directly for ticket purchases.
+            </div>
+        </div>
+
+        <div class="faq-question">
+            <h4>6. How can I contribute to the chat space?</h4>
+            <div class="faq-answer">
+                Once you're logged in, you can post messages, share images, or videos, and engage in discussions with others. Whether you’re seeking recommendations or sharing experiences, the chat space is a great place to connect.
+            </div>
+        </div>
+
+        <div class="faq-question">
+            <h4>8. What are the best things to do in Galway?</h4>
+            <div class="faq-answer">
+                Some must-visit spots include the Galway Cathedral, Eyre Square, the Claddagh, and the Galway City Museum. Galway also has amazing food and music scenes, especially during events like the Galway International Arts Festival and Galway Races.
+            </div>
+        </div>
+
+        <div class="faq-question">
+            <h4>9. Can I filter events based on my interests?</h4>
+            <div class="faq-answer">
+                Absolutely! You can filter events by category, date, and location to find the ones that best suit your interests, whether you’re into arts, food, outdoor activities, or something else.
+            </div>
+        </div>
+
+        <div class="faq-question">
+            <h4>10. How do I get around Galway city?</h4>
+            <div class="faq-answer">
+                Galway is a walkable city, with many attractions located within walking distance. For longer distances, there are buses, taxis, and bike rentals available. Additionally, our website provides helpful resources on transport options in Galway.
+            </div>
+        </div>
     </div>
 
     <br><br><br>
@@ -146,9 +177,9 @@ session_start();
                 <p class="copyright">The Galway Compass © 2025</p>
             </div>
         </footer>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="JS/events.js"></script>
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
