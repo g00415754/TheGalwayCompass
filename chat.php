@@ -17,6 +17,7 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="CSS/navbar.css">
     <link rel="stylesheet" href="CSS/footer.css">
     <link rel="stylesheet" href="CSS/fonts.css">
+    <link rel="stylesheet" href="CSS/cursor.css">
     <!-- Add Font Awesome for the trash bin icon -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
@@ -240,6 +241,8 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </footer>
     </div>
+
+    <script src="JS/trailingCursor.js"></script>
 </body>
 
 </html>

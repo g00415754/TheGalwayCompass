@@ -154,24 +154,6 @@ blockquote p {
     margin-top: 10rem !important;
 }
 
-
-
-
-#cursor-dot {
-    position: fixed;
-    width: 15px;
-    height: 15px;
-    background-color: white;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    /* Centers dot */
-    mix-blend-mode: difference;
-    /* Changes on hover */
-    transition: width 0.2s ease, height 0.2s ease;
-}
-
 .fancy {
     position: relative;
     white-space: nowrap;

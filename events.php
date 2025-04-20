@@ -14,6 +14,7 @@ session_start();
     <link rel="stylesheet" href="CSS/navbar.css">
     <link rel="stylesheet" href="CSS/fonts.css">
     <link rel="stylesheet" href="CSS/events.css">
+    <link rel="stylesheet" href="CSS/cursor.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -43,7 +44,7 @@ session_start();
                     <li class="nav-item"><a class="nav-link gabarito hover-effect active" style="color: #001F54;"
                             href="#">Events</a></li>
                     <li class="nav-item"><a class="nav-link gabarito hover-effect" href="chat.php">Chat</a></li>
-                    <li class="nav-item"><a class="nav-link gabarito hover-effect" href="#">Help</a></li>
+                    <li class="nav-item"><a class="nav-link gabarito hover-effect" href="faq.php">Help</a></li>
                 </ul>
                 <ul class="d-flex navbar-nav">
                     <?php if (isset($_SESSION['first_name'])): ?>
@@ -147,6 +148,8 @@ session_start();
             </div>
         </footer>
     </div>
+
+    <script src="JS/trailingCursor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="JS/events.js"></script>
 </body>
