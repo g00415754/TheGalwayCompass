@@ -95,23 +95,20 @@ if (!isset($_SESSION['user_id'])) {
         let lastMessageId = 0; // Track the ID of the last message
 
         function loadMessages() {
-            // Fetch new messages with the ID of the last message
             fetch(`fetch_messages.php?last_message_id=${lastMessageId}`)
                 .then(res => res.json())
                 .then(messages => {
+                    console.log(messages); // Log messages for debugging
                     if (messages.length > 0) {
-                        // Append new messages to chat box
                         messages.forEach(msg => {
                             const div = document.createElement('div');
                             div.classList.add('message');
 
-                            // Check if the message is from the current user (logged-in user)
                             const isMine = msg.user_id === <?php echo $_SESSION['user_id']; ?>;
-
                             if (isMine) {
-                                div.classList.add('mine'); // Sender's message (right side)
+                                div.classList.add('mine');
                             } else {
-                                div.classList.add('other'); // Other user's message (left side)
+                                div.classList.add('other');
                             }
 
                             let content = '';
@@ -123,27 +120,25 @@ if (!isset($_SESSION['user_id'])) {
                                 content = `<video controls src="${msg.message}"></video>`;
                             }
 
-                            // Add delete button for user's own messages
                             const deleteButton = (msg.user_id === <?php echo $_SESSION['user_id']; ?>)
                                 ? `<button class="delete-btn" title="Delete" data-id="${msg.id}">
-                <i class="fas fa-trash-alt" style="color: white;"></i>
-           </button>`
+                                    <i class="fas fa-trash-alt" style="color: white;"></i>
+                                  </button>`
                                 : '';
 
                             div.innerHTML = `
-                        <div class="message-content">
-                            <span class="username">${msg.username}</span>
-                            <span class="timestamp">[${new Date(msg.sent_at).toLocaleString()}]</span>
-                            <div class="content">${content}</div>
-                            ${deleteButton}
-                        </div>
-                    `;
-
+                                <div class="message-content">
+                                    <span class="username">${msg.username}</span>
+                                    <span class="timestamp">[${new Date(msg.sent_at).toLocaleString()}]</span>
+                                    <div class="content">${content}</div>
+                                    ${deleteButton}
+                                </div>
+                            `;
+                            
                             chatBox.appendChild(div);
-                            lastMessageId = msg.id; // Update the last message ID
+                            lastMessageId = msg.id;
                         });
 
-                        // Scroll to the bottom of the chat box
                         chatBox.scrollTop = chatBox.scrollHeight;
                     }
                 })
@@ -154,20 +149,28 @@ if (!isset($_SESSION['user_id'])) {
             e.preventDefault();
             const formData = new FormData(form);
 
+            // Check if the message is empty and if no file is selected
+            const message = formData.get('message');
+            const file = formData.get('file');
+            if (!message && !file) {
+                alert('Please enter a message or select a file to upload.');
+                return;
+            }
+
             fetch('send_message.php', {
                 method: 'POST',
                 body: formData
             })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        form.reset();
-                        loadMessages(); // Reload messages after sending
-                    } else {
-                        alert(data.error || 'Message failed to send.');
-                    }
-                })
-                .catch(err => console.error('Send error:', err));
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    form.reset();
+                    loadMessages(); // Reload messages after sending
+                } else {
+                    alert(data.error || 'Message failed to send.');
+                }
+            })
+            .catch(err => console.error('Send error:', err));
         });
 
         // Load messages initially and then every 3 seconds
@@ -196,7 +199,6 @@ if (!isset($_SESSION['user_id'])) {
                 }
             }
         });
-
     </script>
 
     <br><br><br>
@@ -243,6 +245,9 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 
     <script src="JS/trailingCursor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

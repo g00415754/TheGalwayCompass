@@ -1,56 +1,46 @@
 <?php
 session_start();
 
-// Database connection (update with your local MAMP MySQL details)
+// Use PDO for database connection
 $servername = "localhost";
 $username = "root";
 $password = "root";
-$database = "thegalwaycompass";
+$dbname = "thegalwaycompass";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+try {
+    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
 }
 
-// Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
 
-    // Prepare and execute SQL query to fetch user data
-    $stmt = $conn->prepare("SELECT id, first_name, last_name, email, password_hash FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
+    // Prepare and execute query using PDO
+    $stmt = $pdo->prepare("SELECT id, first_name, last_name, email, password_hash FROM users WHERE email = :email");
+    $stmt->bindParam(':email', $email);
     $stmt->execute();
-    $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        // User found, now verify password
-        $user = $result->fetch_assoc();
-        if (password_verify($password, $user['password_hash'])) {
-            // Password is correct, log the user in
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['first_name'] = $user['first_name'];
-            $_SESSION['last_name'] = $user['last_name'];
-            $_SESSION['email'] = $user['email'];
-            
-            // Redirect to a welcome or dashboard page
-            header("Location: index.php");
-            exit();
-        } else {
-            $error_message = "Invalid password.";
-        }
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($user && password_verify($password, $user['password_hash'])) {
+        // Password is correct
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['first_name'] = $user['first_name'];
+        $_SESSION['last_name'] = $user['last_name'];
+        $_SESSION['email'] = $user['email'];
+
+        header("Location: index.php");
+        exit();
     } else {
-        $error_message = "No account found with that email.";
+        $error_message = "Invalid email or password.";
     }
-
-    $stmt->close();
 }
-
-$conn->close();
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">

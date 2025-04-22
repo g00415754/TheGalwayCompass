@@ -2,18 +2,19 @@
 // Start the session
 session_start();
 
-// Database connection (update with your local MAMP MySQL details)
-$servername = "localhost";  // MAMP default is localhost
-$username = "root";  // MAMP default MySQL username
-$password = "root";  // MAMP default MySQL password
-$database = "thegalwaycompass";  // Your local MAMP database name
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "thegalwaycompass";
 
-$conn = new mysqli($servername, $username, $password, $database);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

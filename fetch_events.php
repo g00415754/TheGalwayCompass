@@ -9,19 +9,18 @@ error_reporting(E_ALL);
 // Return JSON
 header('Content-Type: application/json');
 
-// Database connection
-$host = 'localhost';
-$dbname = 'thegalwaycompass';
-$username = 'root';
-$password = 'root';
+// Include the database connection
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "thegalwaycompass";
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    http_response_code(500);
-    echo json_encode(['error' => 'Database connection failed: ' . $e->getMessage()]);
-    exit();
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
 // Fetch distinct categories from events table (for filtering)
@@ -35,7 +34,7 @@ $end = isset($_GET['end']) ? $_GET['end'] : null;
 $category = isset($_GET['category']) ? $_GET['category'] : null;
 
 // Build SQL query with filters
-$sql = "SELECT * FROM upcoming_events WHERE 1=1"; // Default condition to simplify adding more filters
+$sql = "SELECT * FROM upcoming_events WHERE 1=1";
 
 // Add date range filter if available
 if ($start && $end) {
